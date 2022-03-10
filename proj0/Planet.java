@@ -1,7 +1,7 @@
 import static java.lang.Math.sqrt;
 
 public class Planet {
-    public static double G = 6.67e-11;
+    static double G = 6.67e-11;
     public double xxPos;
     public double yyPos;
     public double xxVel;

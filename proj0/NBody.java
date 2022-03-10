@@ -53,6 +53,7 @@ public class NBody {
             }
             StdDraw.show();
             StdDraw.pause(10);
+            time +=dt;
         }
         StdOut.printf("%d\n", array.length);
         StdOut.printf("%.2e\n", radius);
