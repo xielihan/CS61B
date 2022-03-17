@@ -38,7 +38,7 @@ public class ArrayDeque<T> {
         int count = size;
         int first = (nextFirst + 1) % items.length;
         while(count > 0){
-            System.out.println(items[first]);
+            System.out.println(items[first]+" ");
             first = (first + 1) % items.length;
             count--;
         }
@@ -48,6 +48,7 @@ public class ArrayDeque<T> {
         nextFirst = (nextFirst + 1) % items.length;
         T tmp = items[nextFirst];
         items[nextFirst] = null;
+        size --;
         return tmp;
     }
 
@@ -55,6 +56,7 @@ public class ArrayDeque<T> {
         nextLast = (nextLast - 1) % items.length;
         T tmp = items[nextLast];
         items[nextLast] = null;
+        size --;
         return tmp;
     }
 
