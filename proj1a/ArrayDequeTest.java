@@ -5,5 +5,6 @@ public class ArrayDequeTest {
         for(int i = 0; i < 14; i++)
             lld1.addFirst(i);
         lld1.printDeque();
+        System.out.println(lld1.get(10));
     }
 }

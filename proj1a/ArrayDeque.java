@@ -53,6 +53,8 @@ public class ArrayDeque<T> {
     public T removeFirst(){
         if(usageFactor())
             resize(1);
+        if(isEmpty())
+            return null;
         nextFirst = floorMod(nextFirst + 1, items.length);
         T tmp = items[nextFirst];
         items[nextFirst] = null;
@@ -63,6 +65,8 @@ public class ArrayDeque<T> {
     public T removeLast(){
         if(usageFactor())
             resize(1);
+        if(isEmpty())
+            return null;
         nextLast = floorMod(nextLast - 1, items.length);
         T tmp = items[nextLast];
         items[nextLast] = null;
