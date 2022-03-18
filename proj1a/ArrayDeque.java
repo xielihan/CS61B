@@ -72,7 +72,7 @@ public class ArrayDeque<T> {
         return items[(nextFirst+index+1)%(items.length)];
     }
 
-    public void resize(int x){
+    private void resize(int x){
         T[] a = (T[]) new Object[(size*x)/2];
         int first = size/2;
         for(int i = 0; i < size; i++){
@@ -83,7 +83,7 @@ public class ArrayDeque<T> {
         items = a;
     }
 
-    public boolean usageFactor(){
+    private boolean usageFactor(){
         double factor = size/items.length;
         if(items.length >=16 && factor < 0.25)
             return true;
