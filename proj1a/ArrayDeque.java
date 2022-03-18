@@ -79,7 +79,7 @@ public class ArrayDeque<T> {
     }
 
     private void resize(int x){
-        T[] a = (T[]) new Object[(size*x)/2];
+        T[] a = (T[]) new Object[(items.length*x)/2];
         int first = size/2;
         for(int i = 0; i < size; i++){
             a[(first+i)%(a.length)] = items[floorMod(nextFirst+1+i, items.length)];
