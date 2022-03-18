@@ -1,3 +1,5 @@
+import static java.lang.Math.floorMod;
+
 public class ArrayDeque<T> {
     private T[] items;
     private int size;
@@ -16,7 +18,7 @@ public class ArrayDeque<T> {
         if (size == items.length)
             resize(4);
         items[nextFirst] = item;
-        nextFirst = (nextFirst-1)%(items.length);
+        nextFirst = floorMod((nextFirst-1),(items.length));
         size++;
     }
 
@@ -24,7 +26,7 @@ public class ArrayDeque<T> {
         if(size == items.length)
             resize(4);
         items[nextLast] = item;
-        nextLast = (nextLast+1)% (items.length);
+        nextLast = floorMod((nextLast+1), (items.length));
         size++;
     }
 
@@ -40,10 +42,10 @@ public class ArrayDeque<T> {
 
     public void printDeque(){
         int count = size;
-        int first = (nextFirst + 1) % (items.length);
+        int first = floorMod(nextFirst + 1, items.length);
         while(count > 0){
-            System.out.println(items[first]+" ");
-            first = (first + 1) % (items.length);
+            System.out.print(items[first]+" ");
+            first = floorMod(first + 1, items.length);
             count--;
         }
     }
@@ -51,7 +53,7 @@ public class ArrayDeque<T> {
     public T removeFirst(){
         if(usageFactor())
             resize(1);
-        nextFirst = (nextFirst + 1) % (items.length);
+        nextFirst = floorMod(nextFirst + 1, items.length);
         T tmp = items[nextFirst];
         items[nextFirst] = null;
         size --;
@@ -61,7 +63,7 @@ public class ArrayDeque<T> {
     public T removeLast(){
         if(usageFactor())
             resize(1);
-        nextLast = (nextLast - 1) % (items.length);
+        nextLast = floorMod(nextLast - 1, items.length);
         T tmp = items[nextLast];
         items[nextLast] = null;
         size --;
@@ -69,17 +71,17 @@ public class ArrayDeque<T> {
     }
 
     public T get(int index){
-        return items[(nextFirst+index+1)%(items.length)];
+        return items[floorMod(nextFirst+index+1, items.length)];
     }
 
     private void resize(int x){
         T[] a = (T[]) new Object[(size*x)/2];
         int first = size/2;
         for(int i = 0; i < size; i++){
-            a[(first+i)%(a.length)] = items[(nextFirst+1+i)%(items.length)];
+            a[(first+i)%(a.length)] = items[floorMod(nextFirst+1+i, items.length)];
         }
-        nextFirst = (first - 1)%(a.length);
-        nextLast = (first + size)%(a.length);
+        nextFirst = floorMod(first - 1, a.length);
+        nextLast = floorMod(first + size, a.length);
         items = a;
     }
 
