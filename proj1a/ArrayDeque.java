@@ -90,7 +90,7 @@ public class ArrayDeque<T> {
     }
 
     private boolean usageFactor(){
-        double factor = size/items.length;
+        double factor = (double)size/(double)items.length;
         if(items.length >=16 && factor < 0.25)
             return true;
         return false;
